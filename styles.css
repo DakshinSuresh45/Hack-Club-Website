@@ -1,10 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+        body {
             background-color: #020c18;
             color: #f1f5f9;
             font-family: 'Inter', sans-serif;
@@ -64,4 +58,3 @@ body {
         ::-webkit-scrollbar-thumb:hover {
             background: #c44569;
         }
-    
