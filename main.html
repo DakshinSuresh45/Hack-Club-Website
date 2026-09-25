@@ -1,32 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Club & CincyHacks</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hc: {
+                            red: '#c44569',
+                            blue: '#041f3b',
+                            navy: '#020c18',
+                            slate: '#0d2238',
+                            accent: '#38bdf8',
+                            highlight: '#f59e0b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
 </head>
-<body>
-  <nav class="navbar">
-    <div class="nav-logo">MyLogo</div>
-    
-    <!-- Hamburger menu button for mobile screens -->
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-        &#9776; <!-- Unicode character for hamburger icon -->
-    </button>
+<body class="min-h-screen flex flex-col justify-between selection:bg-hc-red selection:text-white">
 
-    <!-- Navigation links -->
-    <ul class="nav-links" id="nav-links">
-        <li><a href="hackclub.html">Hack Club</a></li>
-        <li><a href="#members">Members</a></li>
-        <li><a href="#cincyhacks">CincyHacks</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 bg-hc-navy/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Brand -->
+            <a href="#" onclick="switchTab('hack-club'); return false;" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-hc-red flex items-center justify-center font-mono font-bold text-white text-xl shadow-lg badge-glow group-hover:scale-105 transition-transform">
+                    &lt;/&gt;
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight text-white group-hover:text-hc-red transition-colors">
+                        HACK CLUB
+                    </span>
+                    <span class="text-xs text-slate-400 block -mt-1 font-mono">&amp; CincyHacks</span>
+                </div>
+            </a>
 
-  </nav>
-  <footer>
-      <p>built by hack club members</p>
-  </footer>
-  <script src="script.js"></script>
+            <!-- Navigation Links -->
+            <nav class="flex items-center gap-2 sm:gap-4 p-1.5 rounded-xl bg-slate-900/80 border border-slate-800">
+                <button id="nav-hack-club" onclick="switchTab('hack-club')" 
+                        class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-white bg-hc-red shadow-md">
+                    <i class="fa-solid fa-code mr-1.5"></i> Hack Club
+                </button>
+                <button id="nav-club-members" onclick="switchTab('club-members')" 
+                        class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800">
+                    <i class="fa-solid fa-users mr-1.5"></i> Club Members
+                </button>
+                <button id="nav-cincyhacks" onclick="switchTab('cincyhacks')" 
+                        class="nav-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800">
+                    <i class="fa-solid fa-rocket mr-1.5"></i> CincyHacks
+                </button>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- ================= HACK CLUB SECTION ================= -->
+        <section id="view-hack-club" class="view-panel active space-y-12">
+            
+            <!-- Hero Banner -->
+            <div class="glass-card p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-slate-700/50">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-hc-red/20 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="max-w-3xl space-y-6 relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-hc-red/10 border border-hc-red/30 text-hc-red text-xs font-mono font-bold">
+                        <span class="w-2 h-2 rounded-full bg-hc-red animate-ping"></span>
+                        WELCOME TO HACK CLUB
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Code, Build &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-hc-red via-red-400 to-hc-accent">Ship Projects</span> Together.
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        Hack Club is a network of high school maker communities. We are an entirely student-led coding environment where you don't just learn syntax—you <span class="info-highlight">build real products</span> and launch them to the world.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Visual Info Highlights Grid -->
+            <div class="space-y-4">
+                <h2 class="text-xs font-mono font-bold text-hc-accent uppercase tracking-widest">
+                    <i class="fa-solid fa-highlighter mr-1"></i> Key Information Highlights
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Highlight Card 1 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-hc-red space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-hc-red font-bold">MEETING TIMES</span>
+                            <i class="fa-regular fa-clock text-hc-red"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Every Thursday @ 3:30 PM</h3>
+                        <p class="text-sm text-slate-300">
+                            We gather weekly in <span class="info-highlight">Computer Lab 204</span> for live coding sessions, hardware hacking, and project feedback.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Card 2 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-hc-accent space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-hc-accent font-bold">HARDWARE &amp; GRANTS</span>
+                            <i class="fa-solid fa-microchip text-hc-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Free Hardware &amp; Subdomains</h3>
+                        <p class="text-sm text-slate-300">
+                            Members get access to <span class="info-highlight">free Raspberry Pis, Arduinos</span>, microcontrollers, and custom domain grants to host their apps.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Card 3 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-hc-highlight space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-hc-highlight font-bold">NO EXPERIENCE REQUIRED</span>
+                            <i class="fa-solid fa-seedling text-hc-highlight"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">100% Beginner Friendly</h3>
+                        <p class="text-sm text-slate-300">
+                            Whether you've never written a line of code or build full-stack apps, <span class="info-highlight">everyone is welcome to join</span> and learn.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Detailed About & Activity Highlight Section -->
+            <div class="glass-card p-8 rounded-3xl space-y-6">
+                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-hc-red"></i> What We Do at Hack Club
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-300 text-sm leading-relaxed">
+                    <div class="space-y-4">
+                        <p>
+                            At Hack Club, we believe the best way to learn to code is by building things you care about. Instead of standard classroom lectures, every session is structured like a mini hackathon where you get to work on your own ideas.
+                        </p>
+                        <ul class="space-y-2 font-mono text-xs text-slate-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-hc-red"></i> <span class="info-highlight">Build Web Apps &amp; Mobile Games</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-hc-red"></i> <span class="info-highlight">Ship Open Source Software</span></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-hc-red"></i> <span class="info-highlight">Participate in Global Hackathons</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 space-y-4 font-mono text-xs">
+                        <div class="text-hc-accent font-bold">&gt; HOW_TO_JOIN.sh</div>
+                        <p class="text-slate-400">1. Show up to Room 204 on Thursdays at 3:30 PM.</p>
+                        <p class="text-slate-400">2. Join our official Discord channel for daily mentorship.</p>
+                        <p class="text-slate-400">3. Pick a project idea and start shipping code!</p>
+                        <button onclick="switchTab('club-members')" class="w-full py-2.5 bg-hc-red text-white font-bold rounded-xl hover:bg-red-600 transition-colors">
+                            Meet Active Club Members &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= CLUB MEMBERS SECTION ================= -->
+        <section id="view-club-members" class="view-panel space-y-8">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">Club Members</h2>
+                    <p class="text-slate-400 text-sm">Meet the passionate high school builders behind our Hack Club chapter.</p>
+                </div>
+                <button onclick="toggleMemberModal()" class="px-4 py-2.5 bg-hc-red hover:bg-red-600 text-white font-semibold text-sm rounded-xl shadow-lg transition-all flex items-center gap-2 self-start sm:self-auto">
+                    <i class="fa-solid fa-user-plus"></i> Add Member Card
+                </button>
+            </div>
+
+            <!-- Members Grid -->
+            <div id="members-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Member Card 1 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center space-y-4 group">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" 
+                         alt="Member Profile" class="w-24 h-24 rounded-full object-cover border-2 border-hc-red p-1 group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Alex Chen</h3>
+                        <span class="text-xs font-mono text-hc-accent bg-hc-accent/10 px-2 py-0.5 rounded">Club Lead &amp; Web Dev</span>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed bg-slate-900/50 p-3 rounded-xl border border-slate-800/80 w-full">
+                        "Hey! I love building full-stack web applications with React and Tailwind. Currently building an open-source IDE for students!"
+                    </p>
+                    <div class="flex gap-3 text-slate-400 text-sm pt-1">
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member Card 2 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center space-y-4 group">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300" 
+                         alt="Member Profile" class="w-24 h-24 rounded-full object-cover border-2 border-hc-accent p-1 group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Marcus Vance</h3>
+                        <span class="text-xs font-mono text-hc-red bg-hc-red/10 px-2 py-0.5 rounded">Hardware Hacker</span>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed bg-slate-900/50 p-3 rounded-xl border border-slate-800/80 w-full">
+                        "Fascinated by robotics, ESP32 microcontrollers, and custom PCB designs. Always down to solder something new on Thursdays!"
+                    </p>
+                    <div class="flex gap-3 text-slate-400 text-sm pt-1">
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Member Card 3 -->
+                <div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center space-y-4 group">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300" 
+                         alt="Member Profile" class="w-24 h-24 rounded-full object-cover border-2 border-hc-highlight p-1 group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Samantha Patel</h3>
+                        <span class="text-xs font-mono text-hc-highlight bg-hc-highlight/10 px-2 py-0.5 rounded">AI &amp; Data Science</span>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed bg-slate-900/50 p-3 rounded-xl border border-slate-800/80 w-full">
+                        "Exploring machine learning and Python pipelines. Organizing CincyHacks workshops to teach beginners how to train models!"
+                    </p>
+                    <div class="flex gap-3 text-slate-400 text-sm pt-1">
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= CINCYHACKS SECTION ================= -->
+        <section id="view-cincyhacks" class="view-panel space-y-12">
+            
+            <!-- CincyHacks Header Banner -->
+            <div class="glass-card p-8 sm:p-12 rounded-3xl relative overflow-hidden bg-gradient-to-r from-hc-navy via-slate-900 to-hc-slate border border-hc-red/30">
+                <div class="max-w-3xl space-y-4">
+                    <span class="px-3 py-1 bg-hc-red text-white text-xs font-mono font-bold rounded-full">FLAGSHIP EVENT</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-white">CincyHacks 2026</h1>
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        Cincinnati's premier high school hackathon hosted by our Hack Club members. Bringing together coders, designers, and innovators for 24 hours of creating.
+                    </p>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="glass-card p-8 rounded-2xl space-y-4 border-l-4 border-l-hc-red">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye text-hc-red"></i> Who We Are
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        CincyHacks is an annual hackathon organized entirely by high school students from Hack Club. We aim to empower students across the Greater Cincinnati area by providing a collaborative space, mentorship, and resources to build software and hardware projects.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl space-y-4 border-l-4 border-l-hc-accent">
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-hc-accent"></i> What We Want to Achieve
+                    </h2>
+                    <ul class="text-slate-300 text-sm space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-arrow-right text-hc-accent text-xs"></i> <strong>More CincyHacks Attendees:</strong> Expand reach across 30+ regional high schools.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-arrow-right text-hc-accent text-xs"></i> <strong>More Growth:</strong> Increase workshop variety including AI, Game Dev, and Hardware.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-arrow-right text-hc-accent text-xs"></i> <strong>More Reach:</strong> Connect students directly with industry mentors and local tech sponsors.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Past Accomplishments -->
+            <div class="glass-card p-8 rounded-2xl text-center space-y-4 border border-hc-red/20 bg-gradient-to-b from-slate-900/80 to-hc-navy">
+                <span class="text-xs font-mono font-bold text-hc-highlight uppercase tracking-widest">PROUD MILESTONE</span>
+                <h2 class="text-3xl font-extrabold text-white">Past Accomplishments</h2>
+                <div class="p-6 bg-hc-red/10 border border-hc-red/30 rounded-xl inline-block max-w-xl">
+                    <p class="text-lg font-bold text-white">
+                        🏆 Largest high school student-led hackathon in Ohio
+                    </p>
+                    <p class="text-xs text-slate-300 mt-2">
+                        Welcomed hundreds of student participants, awarded over $5,000 in prizes, and shipped 60+ projects in a single weekend.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sponsors Section -->
+            <div class="space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-white">Our Sponsors</h2>
+                    <p class="text-slate-400 text-sm">Empowering the next generation of technologists</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                    <!-- Sponsor 1 -->
+                    <div class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center space-y-3 hover:border-hc-red transition-colors">
+                        <div class="text-2xl font-black tracking-widest text-white font-mono">
+                            INFO<span class="text-hc-red">TRUST</span>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Official Lead Sponsor</span>
+                    </div>
+
+                    <!-- Sponsor 2 -->
+                    <div class="glass-card p-8 rounded-2xl flex flex-col items-center justify-center space-y-3 hover:border-hc-accent transition-colors">
+                        <div class="text-2xl font-black tracking-widest text-white font-mono">
+                            EN<span class="text-hc-accent">CORE</span>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Official Community Sponsor</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media Gallery (Boilerplate) -->
+            <div class="space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-white">Event Media &amp; Highlights</h2>
+                    <p class="text-slate-400 text-sm">Moments captured from previous hackathons</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="glass-card h-48 rounded-2xl overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600" alt="Hackathon Opening" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                        <div class="absolute inset-0 bg-black/40 flex items-end p-4 text-xs font-mono text-white">Opening Ceremony</div>
+                    </div>
+                    <div class="glass-card h-48 rounded-2xl overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600" alt="Team Hacking" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                        <div class="absolute inset-0 bg-black/40 flex items-end p-4 text-xs font-mono text-white">Late Night Building</div>
+                    </div>
+                    <div class="glass-card h-48 rounded-2xl overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Project Demos" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                        <div class="absolute inset-0 bg-black/40 flex items-end p-4 text-xs font-mono text-white">Final Project Demos</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="memberModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-card max-w-md w-full rounded-2xl p-6 relative border border-slate-700">
+            <button onclick="toggleMemberModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <h3 class="text-xl font-bold text-white mb-4">Add Club Member Profile</h3>
+            
+            <form onsubmit="handleAddMember(event)" class="space-y-4 text-xs font-mono">
+                <div>
+                    <label class="block text-slate-300 mb-1">MEMBER NAME</label>
+                    <input type="text" id="input-name" required placeholder="e.g. Jordan Lee" 
+                           class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-hc-red">
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 mb-1">ROLE / TITLE</label>
+                    <input type="text" id="input-role" required placeholder="e.g. Game Developer" 
+                           class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-hc-red">
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 mb-1">SHORT BIO</label>
+                    <textarea id="input-bio" rows="3" required placeholder="A little bit about yourself..." 
+                              class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-hc-red"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-2.5 bg-hc-red hover:bg-red-600 text-white font-bold rounded-xl transition-colors font-sans text-sm">
+                    Add Member Card
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="glass-card border-t border-slate-800/80 mt-16 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-hc-red"></span>
+                <span>built by hack club members</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <a href="#" class="hover:text-hc-red transition-colors">GitHub</a>
+                <a href="#" class="hover:text-hc-red transition-colors">Discord</a>
+                <a href="#" class="hover:text-hc-red transition-colors">CincyHacks</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

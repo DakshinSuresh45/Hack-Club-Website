@@ -4,76 +4,64 @@
     box-sizing: border-box;
 }
 
-/* Base Navbar Styles */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 15px 30px;
-    font-family: Arial, sans-serif;
-}
+body {
+            background-color: #020c18;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+        }
 
-.nav-logo {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-}
+        /* Glassmorphism styling */
+        .glass-card {
+            background: rgba(13, 34, 56, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-}
+        .glass-card:hover {
+            border-color: rgba(196, 69, 105, 0.35);
+        }
 
-.nav-links li {
-    margin-left: 20px;
-}
+        /* Vibrant Highlighting Marker inside Hack Club Page */
+        .info-highlight {
+            background: linear-gradient(120deg, rgba(196, 69, 105, 0.3) 0%, rgba(56, 189, 248, 0.3) 100%);
+            border-left: 3px solid #c44569;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: inline-block;
+        }
 
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease;
-}
+        .badge-glow {
+            box-shadow: 0 0 15px rgba(196, 69, 105, 0.4);
+        }
 
-.nav-links a:hover {
-    color: #007bff;
-}
+        /* Tab Transition */
+        .view-panel {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
 
-/* Hide the hamburger button on desktop layouts */
-.nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-}
+        .view-panel.active {
+            display: block;
+            opacity: 1;
+        }
 
-/* Mobile Layout Styles (Screens smaller than 768px) */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: block; /* Show hamburger button */
-    }
-
-    .nav-links {
-        display: none; /* Hide menu by default on mobile */
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: #333;
-        padding: 20px 0;
-        text-align: center;
-    }
-
-    .nav-links li {
-        margin: 15px 0;
-    }
-
-    /* JavaScript toggles this class to open the menu */
-    .nav-links.active {
-        display: flex;
-    }
-}
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020c18;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0d2238;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c44569;
+        }
+    
